@@ -66,7 +66,7 @@ def main() -> None:
     clear()
     
     while True:
-        option: str = input("1. Add data\n2. Get data\n3. Delete data\n4. Reset password \n5. Exit\noption: ")
+        option: str = input("1. Add data\n2. Get data\n3. View data\n4. Delete data\n5. Reset password \n6. Exit\noption: ")
         match int(option):
             case 1:
                 name: str = input("name: ")
@@ -90,6 +90,12 @@ def main() -> None:
                 clear()
                 print(f"copied {name} to clipboard")
             case 3:
+                clear()
+                print("View Data")
+                for i, name in enumerate(data["data"].keys(), start=1):
+                    print(f"{i}. {name}")
+                print("=" * 100)
+            case 4:
                 name: str = input("name: ")
                 if name not in data["data"]:
                     print(f"{name} not found")
@@ -98,11 +104,11 @@ def main() -> None:
                 save_data(data)
                 clear()
                 print(f"deleted {name}")
-            case 4:
+            case 5:
                 new_password()
                 clear()
                 print("password reset successfully")
-            case 5:
+            case 6:
                 break
             case _:
                 clear()
